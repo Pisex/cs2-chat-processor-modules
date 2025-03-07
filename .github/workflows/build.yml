@@ -64,7 +64,7 @@ jobs:
 
       - name: Build plugins
         run: |
-          PLUGIN_DIRS=("Admins" "AdminTime" "BlockDB" "Chat" "CheckCheats" "FunCommands" "Hide" "Maps" "Players" "Rcon" "Status" "VoteBKM" "VIP" "VIP_Permissions" "LR")
+          PLUGIN_DIRS=("Admin" "Personal" "VIP")
           for PLUGIN in "${PLUGIN_DIRS[@]}"; do
             cd $PLUGIN
             mkdir -p build
@@ -82,21 +82,9 @@ jobs:
         with:
           name: compile
           path: |
-            ${{ github.workspace }}/Admins.zip
-            ${{ github.workspace }}/AdminTime.zip
-            ${{ github.workspace }}/BlockDB.zip
-            ${{ github.workspace }}/Chat.zip
-            ${{ github.workspace }}/CheckCheats.zip
-            ${{ github.workspace }}/FunCommands.zip
-            ${{ github.workspace }}/Hide.zip
-            ${{ github.workspace }}/Maps.zip
-            ${{ github.workspace }}/Players.zip
-            ${{ github.workspace }}/Rcon.zip
-            ${{ github.workspace }}/Status.zip
-            ${{ github.workspace }}/VoteBKM.zip
+            ${{ github.workspace }}/Admin.zip
+            ${{ github.workspace }}/Personal.zip
             ${{ github.workspace }}/VIP.zip
-            ${{ github.workspace }}/VIP_Permissions.zip
-            ${{ github.workspace }}/LR.zip
 
   release:
       needs: build
