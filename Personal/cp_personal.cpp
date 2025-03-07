@@ -12,7 +12,6 @@ CGlobalVars *gpGlobals = nullptr;
 
 IUtilsApi* g_pUtils;
 IPlayersApi* g_pPlayers;
-IAdminApi* g_pAdminApi;
 IChatProcessorApi* g_pCP;
 
 struct Setting
@@ -115,15 +114,6 @@ void cp_personal::AllPluginsLoaded()
 	{
 		g_SMAPI->Format(error, sizeof(error), "Missing Chat Processor plugin");
 		ConColorMsg(Color(255, 0, 0, 255), "[%s] %s\n", GetLogTag(), error);
-		std::string sBuffer = "meta unload "+std::to_string(g_PLID);
-		engine->ServerCommand(sBuffer.c_str());
-		return;
-	}
-	g_pAdminApi = (IAdminApi *)g_SMAPI->MetaFactory(Admin_INTERFACE, &ret, NULL);
-	if (ret == META_IFACE_FAILED)
-	{
-		g_pUtils->ErrorLog("[%s] Missing Admin system plugin", GetLogTag());
-
 		std::string sBuffer = "meta unload "+std::to_string(g_PLID);
 		engine->ServerCommand(sBuffer.c_str());
 		return;

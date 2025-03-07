@@ -15,7 +15,6 @@
 #include <KeyValues.h>
 #include "CCSPlayerController.h"
 #include "include/menus.h"
-#include "include/admin.h"
 #include "include/chat_processor.h"
 
 class cp_personal final : public ISmmPlugin, public IMetamodListener
