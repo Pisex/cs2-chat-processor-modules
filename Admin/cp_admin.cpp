@@ -66,16 +66,17 @@ void LoadConfig()
 	FOR_EACH_TRUE_SUBKEY(hKv, pValue)
 	{
 		const char* szIdentifier = pValue->GetName();
-		if(szIdentifier[0] == '@')
-		{
-			g_mapPrefixesPermissions[szIdentifier] = {
+		if(strlen(szIdentifier) == 1) {
+			g_mapPrefixes[szIdentifier] = {
 				pValue->GetString("tag", ""),
 				pValue->GetString("tag_color", ""),
 				pValue->GetString("name_color", ""),
 				pValue->GetString("chat_color", "")
 			};
-		} else {
-			g_mapPrefixes[std::string(szIdentifier).substr(1)] = {
+		}
+		else if(szIdentifier[0] == '@')
+		{
+			g_mapPrefixesPermissions[szIdentifier] = {
 				pValue->GetString("tag", ""),
 				pValue->GetString("tag_color", ""),
 				pValue->GetString("name_color", ""),
@@ -160,7 +161,7 @@ const char* cp_admin::GetLicense()
 
 const char* cp_admin::GetVersion()
 {
-	return "1.0";
+	return "1.0.1";
 }
 
 const char* cp_admin::GetDate()
